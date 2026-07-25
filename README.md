@@ -4,6 +4,8 @@ Analysis of data from 777 US colleges and universities, predicting student gradu
 ## Menu
 - [Dataset](#dataset)
 - [Methodology](#methodology)
+- [Algorithms](#algorithms)
+- [Results](#results)
 ## 📊Dataset
 ### Variables:
 - Private - Whether the institution is private 
@@ -30,16 +32,24 @@ Analysis of data from 777 US colleges and universities, predicting student gradu
 - Data split — 80% train / 20% test, random_state=327734.
 - Preprocessing — standardization of numeric variables (StandardScaler), encoding of the Private variable (OneHotEncoder(drop='first')).
 - Modeling — Linear Regression and Random Forest (100 / 200 trees, then hyperparameter tuning via GridSearchCV).
-### 💡Algorithms used
-- Model	Parameters
-- Linear Regression	scikit-learn default settings
-- Random Forest (v1)	n_estimators=100, random_state=327734
-- Random Forest (v2)	n_estimators=200, random_state=327734
-- Random Forest after GridSearchCV	n_estimators=300, max_depth=20, max_features='sqrt', min_samples_split=2 (search grid: cv=5, scoring='r2', n_jobs=-1)
+### 💡Algorithms 
+| Model | Parameters |
+| ------------- | ------------- | 
+| Linear Regression | scikit-learn default settings |
+| Random Forest (v1) | n_estimators=100, random_state=327734 |
+| Random Forest (v2) | n_estimators=200, random_state=327734 |
+| Random Forest after GridSearchCV | n_estimators=300, max_depth=20, max_features='sqrt', min_samples_split=2 (search grid: cv=5, scoring='r2', n_jobs=-1) |
 ## Results
 | Model | R² | MAE | RMSE | 
 | ------------- | ------------- | ------------- | ------------- |
 | Linear Regression | 44.28% | 9.29 | 12.01 | 
-| Random Forest (after GridSearchCV) | 41.74% | 9.24 | 12.29 | 
+| Random Forest (after GridSearchCV) | 41.74% | 9.24 | 12.29 |  
 
+### Correlation
+<img width="1200" height="900" alt="korelacja" src="https://github.com/user-attachments/assets/8f3f8c8a-c46f-4f85-978f-5f8e643a7b77" />
+Strongest correlation with Grad.Rate:  
+
+
+**Positive**: Outstate (0.57), Top10perc (0.49), Room.Board (0.41)  
+**Negative**: S.F.Ratio (-0.31)
 			
