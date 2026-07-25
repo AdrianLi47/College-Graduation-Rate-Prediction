@@ -6,6 +6,9 @@ Analysis of data from 777 US colleges and universities, predicting student gradu
 - [Methodology](#methodology)
 - [Algorithms](#algorithms)
 - [Results](#results)
+- [Correlation](#correlation)
+- [Conclusions](#conclusions)
+- [Environment](#environment)
 ## 📊Dataset
 ### Variables:
 - Private - Whether the institution is private 
@@ -39,7 +42,7 @@ Analysis of data from 777 US colleges and universities, predicting student gradu
 | Random Forest (v1) | n_estimators=100, random_state=327734 |
 | Random Forest (v2) | n_estimators=200, random_state=327734 |
 | Random Forest after GridSearchCV | n_estimators=300, max_depth=20, max_features='sqrt', min_samples_split=2 (search grid: cv=5, scoring='r2', n_jobs=-1) |
-## Results
+## 📈Results
 | Model | R² | MAE | RMSE | 
 | ------------- | ------------- | ------------- | ------------- |
 | Linear Regression | 44.28% | 9.29 | 12.01 | 
@@ -53,3 +56,17 @@ Strongest correlation with Grad.Rate:
 **Positive**: Outstate (0.57), Top10perc (0.49), Room.Board (0.41)  
 **Negative**: S.F.Ratio (-0.31)
 			
+## 🔑Conclusions
+1. Financial factors (tuition, cost of living) and the academic strength of incoming students (Top10perc) are strongly associated with graduation rate.
+2. A higher student-to-faculty ratio (S.F.Ratio) correlates with a lower graduation rate.
+3. Linear Regression and Random Forest achieved comparable predictive performance — given its simplicity and interpretability, Linear Regression is the recommended model.
+
+## 💻Environment
+|  | Version | 
+| ------------- | ------------- | 
+| Python | 3.12.3 |
+| pandas | 2.2.3 |
+| numpy | 2.1.3 |
+| scikit-learn | 1.6.1 |
+| matplotlib | 3.10.0 |
+| seaborn | 0.13.2 |
