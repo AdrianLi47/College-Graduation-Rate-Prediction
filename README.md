@@ -3,6 +3,7 @@
 Analysis of data from 777 US colleges and universities, predicting student graduation rates, using Linear Regression and Random Forest algorithms — from data cleaning, through EDA, to hyperparameter tuning with GridSearchCV.
 ## Menu
 - [Dataset](#dataset)
+- [Methodology](#methodology)
 ## Dataset
 ### Variables:
 - Private - Whether the institution is private 
@@ -23,3 +24,22 @@ Analysis of data from 777 US colleges and universities, predicting student gradu
 - perc.alumni - % of alumni who donate 
 - Expend - Instructional expenditure per student
 - **Grad_Rate** - **Target variable — graduation rate** 
+## Methodology
+- Data cleaning — dropping missing rows - (dropna()), clipping unrealistic values above 100% for Grad.Rate, PhD, Terminal - (.clip(upper=100)).
+- Exploratory Data Analysis (EDA) — correlation matrix between predictors and the target variable.
+- Data split — 80% train / 20% test, random_state=327734.
+- Preprocessing — standardization of numeric variables (StandardScaler), encoding of the Private variable (OneHotEncoder(drop='first')).
+- Modeling — Linear Regression and Random Forest (100 / 200 trees, then hyperparameter tuning via GridSearchCV).
+### Algorithms used
+- Model	Parameters
+- Linear Regression	scikit-learn default settings
+- Random Forest (v1)	n_estimators=100, random_state=327734
+- Random Forest (v2)	n_estimators=200, random_state=327734
+- Random Forest after GridSearchCV	n_estimators=300, max_depth=20, max_features='sqrt', min_samples_split=2 (search grid: cv=5, scoring='r2', n_jobs=-1)
+## Results
+| Model | R² | MAE | RMSE | 
+| ------------- | ------------- | ------------- | ------------- |
+| Linear Regression | 44.28% | 9.29 | 12.01 | 
+| Random Forest (after GridSearchCV) | 41.74% | 9.24 | 12.29 | 
+
+			
